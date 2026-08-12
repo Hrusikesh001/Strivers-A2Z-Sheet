@@ -1,0 +1,19 @@
+public class character_hashing_03 {
+    public static void main(String[] args) {
+        String s = "abcab";
+        // Precompute
+        int[] hash = new int[26];
+
+        for (int i = 0; i < s.length(); i++) {
+            hash[s.charAt(i) - 'a']++;
+        }
+        // Queries
+        char[] queries = { 'a', 'b', 'c', 'd' };
+
+        // Fetch
+        for (int i = 0; i < queries.length; i++) {
+            char c = queries[i];
+            System.out.println(hash[c - 'a']);
+        }
+    }
+}
