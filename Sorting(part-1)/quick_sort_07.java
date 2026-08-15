@@ -7,10 +7,10 @@ public class quick_sort_07 {
         int i = low;
         int j = high;
         while(i < j) {
-            while(arr[i] <= pivot && i <= high) {
+            while(arr[i] <= pivot && i <= high-1) {
                 i++;
             }
-            while(arr[j] > pivot && j >= low) {
+            while(arr[j] > pivot && j >= low+1) {
                 j--;
             }
             if(i < j) {
