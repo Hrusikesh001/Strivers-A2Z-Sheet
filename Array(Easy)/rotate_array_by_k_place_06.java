@@ -57,7 +57,7 @@ public class rotate_array_by_k_place_06 {
         int n = arr.length;
         int k = 3;
 
-        rotateArray(arr,n, k);
+        rotateArray(arr,k, n);
 
         for (int num : arr) {
             System.out.print(num + " ");
