@@ -50,18 +50,39 @@
 
 
 // Optimal Approach — Sum Formula
+// public class missing_number_12 {
+//         public static int missingNumber(int[] nums) {
+//             int n = nums.length;
+//             int expectedSum = n * (n + 1) / 2;
+//             int actualSum = 0;
+//             for (int i = 0; i < n; i++) {
+//                 actualSum += nums[i];
+//             }
+//             return expectedSum - actualSum;
+//         }
+//         public static void main(String[] args) {
+//             int[] nums = { 3,2, 0, 1 };
+//             System.out.println(missingNumber(nums));
+//         }
+// }
+
+
+
+//Even Better Optimal — XOR
 public class missing_number_12 {
-        public static int missingNumber(int[] nums) {
-            int n = nums.length;
-            int expectedSum = n * (n + 1) / 2;
-            int actualSum = 0;
-            for (int i = 0; i < n; i++) {
-                actualSum += nums[i];
-            }
-            return expectedSum - actualSum;
+    public static int missingNumber(int[] nums) {
+        int n = nums.length;
+        int xor = 0;
+        for(int i=0; i<=n; i++) {
+            xor = xor^i;
         }
-        public static void main(String[] args) {
-            int[] nums = { 3,2, 0, 1 };
-            System.out.println(missingNumber(nums));
+        for(int i = 0; i< n; i++) {
+            xor = xor^nums[i];
         }
+        return xor;
+    } 
+    public static void main(String[] args) {
+             int[] nums = { 3,2, 0, 1 };
+             System.out.println(missingNumber(nums));
+         } 
 }
