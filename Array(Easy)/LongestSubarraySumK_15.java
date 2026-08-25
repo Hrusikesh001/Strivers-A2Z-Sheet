@@ -23,41 +23,69 @@
 
 
 //Better Approach
-import java.util.*;
+// import java.util.*;
+// public class LongestSubarraySumK_15 {
+//     public static int longestSubarrayWithSumK(int[] arr, long k) {
+
+//         HashMap<Long, Integer> preSumMap = new HashMap<>();
+
+//         long sum = 0;
+//         int maxLen = 0;
+
+//         for (int i = 0; i < arr.length; i++) {
+
+//             sum += arr[i];
+
+//             if (sum == k) {
+//                 maxLen = Math.max(maxLen, i + 1);
+//             }
+
+//             long rem = sum - k;
+
+//             if (preSumMap.containsKey(rem)) {
+//                 int len = i - preSumMap.get(rem);
+//                 maxLen = Math.max(maxLen, len);
+//             }
+
+//             if (!preSumMap.containsKey(sum)) {
+//                 preSumMap.put(sum, i);
+//             }
+//         }
+
+//         return maxLen;
+//     }
+
+//     public static void main(String[] args) {
+//         int[] arr = { 1, 2, 3, 1, 1, 1, 1 };
+//         int k = 3;
+//         System.out.println(longestSubarrayWithSumK(arr, k));
+//     }
+// }
+
+
+
+//Optimal approach
 public class LongestSubarraySumK_15 {
-    public static int longestSubarrayWithSumK(int[] arr, long k) {
-
-        HashMap<Long, Integer> preSumMap = new HashMap<>();
-
-        long sum = 0;
-        int maxLen = 0;
-
-        for (int i = 0; i < arr.length; i++) {
-
-            sum += arr[i];
-
-            if (sum == k) {
-                maxLen = Math.max(maxLen, i + 1);
+        public static int longestSubarray(int[] arr, int k) {
+            int left = 0;
+            int sum = 0;
+            int maxLength = 0;
+            for (int right = 0; right < arr.length; right++) {
+                sum += arr[right];
+                while (sum > k) {
+                    sum -= arr[left];
+                    left++;
+                }
+                if (sum == k) {
+                    maxLength = Math.max(maxLength, right - left + 1);
+                }
             }
-
-            long rem = sum - k;
-
-            if (preSumMap.containsKey(rem)) {
-                int len = i - preSumMap.get(rem);
-                maxLen = Math.max(maxLen, len);
-            }
-
-            if (!preSumMap.containsKey(sum)) {
-                preSumMap.put(sum, i);
-            }
+            return maxLength;
         }
 
-        return maxLen;
-    }
-
-    public static void main(String[] args) {
-        int[] arr = { 1, 2, 3, 1, 1, 1, 1 };
-        int k = 3;
-        System.out.println(longestSubarrayWithSumK(arr, k));
-    }
+        public static void main(String[] args) {
+            int[] arr = { 1, 2, 3, 1, 1, 1, 1 };
+            int k = 3;
+            System.out.println(longestSubarray(arr, k));
+        }
 }
