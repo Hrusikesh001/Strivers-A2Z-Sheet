@@ -38,7 +38,7 @@ public class removeOuterParentheses_01 {
         int count = 0;
         for (char ch : s.toCharArray()) {
             if (ch == '(') {
-                if (count == 0) {
+                if (count > 0) {
                     ans.append(ch);
                 }
                 count++;
