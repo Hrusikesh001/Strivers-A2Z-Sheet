@@ -18,9 +18,24 @@ public class convert_arr_to_LL_02 {
         }
         return head;
     }
+    private static int length(Node head) {
+        int count = 0;
+        Node temp = head;
+        while (temp != null) {
+            count++;
+            temp = temp.next;
+        }
+        return count;
+    }
     public static void main(String[] args) {
         int[] arr = { 2, 5, 8, 7 };
         Node head = converter(arr);
-        System.out.println(head.data);
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+        System.out.println();
+        System.out.println(length(head));
     }
 }
